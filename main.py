@@ -1,6 +1,6 @@
 license = """MIT License
 
-Copyright (c) 2021 krypton#1000
+Copyright (c) 2024 Kyb6r
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 """
-https://discord.gg/KUgxrx25Zg
-https://discord.gg/KUgxrx25Zg
-https://discord.gg/KUgxrx25Zg
-https://discord.gg/KUgxrx25Zg
+https://discord.gg/kjwfnXCw2m
+https://discord.gg/kjwfnXCw2m
+https://discord.gg/kjwfnXCw2m
+https://discord.gg/kjwfnXCw2m
+https://discord.gg/kjwfnXCw2m
+https://discord.gg/kjwfnXCw2m
 JOIN VOLT!
 """
 # NOTE the test ban command is for testing the ban all speed of the nuker!
@@ -35,14 +37,14 @@ from os import _exit
 from time import sleep
 from datetime import datetime
 
-os.system("title Rex")
+os.system("title Oxi")
 
 if sys.platform == "win32":
 	clear = lambda: os.system("cls")
 else:
 	clear = lambda: os.system("clear")
 
-with open("Rex/settings.json") as f:
+with open("settings.json") as f:
 	settings = json.load(f)
 token = settings.get("Token")
 prefix = settings.get("Prefix")
@@ -61,7 +63,7 @@ else:
 	  "Authorization": token
 	}
 
-rex = commands.Bot(
+oxi = commands.Bot(
   command_prefix=prefix,
   intents=discord.Intents.all(),
   help_command=None
@@ -78,22 +80,22 @@ sessions = requests.Session()
 
 def menu():
 	clear()
-	print(rex_logo())
+	print(oxi_logo())
 	logging.info(f"\033[38;5;91mCommands; {prefix}nn ~ {prefix}massban ~ {prefix}spam ~ {prefix}testban")
-	logging.info(f"\033[38;5;91mClient; {rex.user}")
+	logging.info(f"\033[38;5;91mClient; {oxi.user}")
 	logging.info(f"\033[38;5;91mPrefix; {prefix}")
 
 
-@rex.event
+@oxi.event
 async def on_ready():
 	try:
-		await rex.change_presence(status=discord.Status.invisible)
+		await oxi.change_presence(status=discord.Status.invisible)
 	except Exception:
 		pass
 	menu()
 
 
-@rex.command(
+@oxi.command(
   aliases=["NUKE", "nn", "nuke", "hi"]
 )
 async def destroy(ctx):
@@ -175,7 +177,7 @@ async def destroy(ctx):
 		_exit(0)
 
 
-@rex.command(
+@oxi.command(
   aliases=["ban", "banall", "ww", "bb"]
 )
 async def massban(ctx):
@@ -208,7 +210,7 @@ async def massban(ctx):
 		sleep(10)
 		_exit(0)
 
-@rex.command(
+@oxi.command(
   aliases=["massping", "mass"]
 )
 async def spam(ctx, amount = 10):
@@ -246,12 +248,12 @@ async def spam(ctx, amount = 10):
 		sleep(10)
 		_exit(0)
 
-@rex.command()
+@oxi.command()
 async def testban(ctx):
 	try:
 		await ctx.message.delete()
 		guild = ctx.guild.id
-		users = open("Rex/ids.txt")
+		users = open("oxi/ids.txt")
 	except:
 		logging.error("Connection error.")
 		sleep(10)
@@ -278,7 +280,7 @@ async def testban(ctx):
 		_exit(0)
 
 
-@rex.event
+@oxi.event
 async def on_guild_channel_create(channel):
 	try:
 		webhook = await channel.create_webhook(name="Wizzed")
@@ -292,15 +294,14 @@ async def on_guild_channel_create(channel):
 		pass
 
 
-def rex_logo():
+def oxi_logo():
 	logo = """
-\033[38;5;160m  @KryptonK#5570
-\033[38;5;88m██████╗ ███████╗██╗  ██╗
-\033[38;5;89m██╔══██╗██╔════╝╚██╗██╔╝
-\033[38;5;90m██████╔╝█████╗   ╚███╔╝ 
-\033[38;5;91m██╔══██╗██╔══╝   ██╔██╗ 
-\033[38;5;92m██║  ██║███████╗██╔╝ ██╗
-\033[38;5;93m╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+\033[38;5;160m  @kyb6r
+  \033[38;5;88m ____    _  __    ____
+  \033[38;5;88m/ __ \  | |/ /   /  _/
+ \033[38;5;88m/ / / /  |   /    / /  
+\033[38;5;88m/ /_/ /  /   |   _/ /   
+\033[38;5;88m\____/  /_/|_|  /___/   
 \033[38;5;90m═══════════════════════════════════
 \033[38;5;90m═══════════════════════════════════════════════
 """
@@ -315,7 +316,7 @@ if __name__ == "__main__":
 	clear()
 	logging.info("Loading client.")
 	try:
-		rex.run(
+		oxi.run(
 		  token, 
 		  bot=bot
 		)
